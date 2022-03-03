@@ -297,6 +297,15 @@ __Resultado__: Pesquisas do Núcleo de Estudo e Pesquisa sobre Insolvência (NEP
 
 ### A jurimetria pode ser utilizada para elaborar boas políticas públicas, estudos acadêmicos e estratégias advocatícias
 
+---
+class: jurimetrics
+
+# Definição de hipóteses
+
+```{r, out.width="100%"}
+knitr::include_graphics("img/metodologia.png")
+```
+
 
 ---
 class: center, middle, inverse

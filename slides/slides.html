@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Metodologia de Pesquisa Jurimétrica</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs-2.11/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="css/custom-css.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Metodologia de Pesquisa Jurimétrica
+## <hr/>
+
+---
+
+
+
+
+
+
+## O que estamos fazendo aqui?
+
+Neste semestre, tentaremos responder à pergunta: 
+
+&lt;center&gt; &lt;b&gt;Como desenvolver um projeto de jurimetria?&lt;/b&gt; &lt;/center&gt;
+
+--
+
+Nossa jornada começa com as definições básicas de jurimetria e, através de diversos exemplos, discutiremos todos os aspectos metodológicos envolvidos.
+
+--
+
+No final, você será capaz de 
+
+- pensar um problema cientificamente, 
+- construir boas perguntas de pesquisa, 
+- planejar um estudo jurimétrico e 
+- desenhar o passo-a-passo para realizá-lo na prática. 
+
+--
+
+Se quiser, você poderá até realizar algumas análises e programas!
+
+---
+
+## VAMOS APRENDER IA??!?!!11
+
+--
+
+- Sim, mas provavelmente não da forma que você espera 😉 
+
+--
+
+- Tem muito *hype* em torno da Inteligência Artificial.
+
+&lt;img src="img/toad-hype-hype.gif" style="display: block; margin: auto;" /&gt;
+
+--
+
+- Vamos discutir o tema a partir de aplicações.
+
+---
+
+## As aulas
+
+- As aulas acontecerão às sextas, das 10h15 às 11h55.
+
+--
+
+Uso do tempo de aula (aproximado)
+
+
+|Horario       |Atividade                                   |
+|:-------------|:-------------------------------------------|
+|10h15 - 10h30 |Dúvidas e correção do quiz da aula anterior |
+|10h30 - 11h30 |Aula expositiva                             |
+|11h30 - 11h55 |Dúvidas e quiz                              |
+
+---
+class: middle
+
+## Dinâmica das aulas
+
+- Pode me interromper para dúvidas e comentários. O plano de aula é apenas um guia, mas a aula vai para onde a gente quiser.
+
+--
+
+- Algumas dúvidas serão respondidas na hora. Outras serão respondidas mais tarde na própria aula ou em aulas futuras.
+
+---
+class: middle
+
+## Materiais
+
+- Os slides, quizzes etc serão disponibilizados na [página do curso](https://ndtj.github.io/202203-m-jurimetria).
+
+- Outros materiais poderão ser disponibilizados no __Teams__.
+
+- Perguntas podem ser enviadas pelo Teams ou no e-mail [jaztrecenti@pucsp.br](mailto:jaztrecenti@pucsp.br)
+
+---
+class: middle
+
+# Guia para os slides
+
+#### Slides sobre cases: __&lt;span style="color:#3B0F70;"&gt;marca azul&lt;/span&gt;__
+
+#### Slides sobre conceitos: __&lt;span style="color:#DE4968;"&gt;marca rosa&lt;/span&gt;__
+
+#### Slides sobre metodologia: __&lt;span style="color:#7AD151;"&gt;marca verde&lt;/span&gt;__
+
+---
+
+## Por onde vamos?
+
+Jurimetria não é software, é processo. Vamos aprender como isso funciona e o que devemos levar em conta.
+
+&lt;center&gt;
+&lt;img src = "img/ml-jurimetria.png" width="100%"&gt;
+&lt;/center&gt;   
+
+---
+class: center, middle, inverse
+
+# Plano de aulas
+
+
+---
+## 1. Aspectos gerais da pesquisa jurimétrica
+__Data__: 04/03/2022
+
+__Tipo__: aula
+
+__Bimestre__: 1
+
+__Atividades__:
+
+- Metodologia geral de pesquisa científica
+- Formulação de hipóteses
+- Fontes de dados
+- Estudo prospectivo e retrospectivo
+
+---
+## 2. Estatística básica
+__Data__: 11/03/2022
+
+__Tipo__: aula
+
+__Bimestre__: 1
+
+__Atividades__:
+
+- Base de dados arrumada
+- Tipos de variáveis
+- Estatísticas de posição
+- Estatísticas de variabilidade
+- Quiz
+
+---
+## 3. Introdução à programação em R
+__Data__: 18/03/2022
+
+__Tipo__: aula
+
+__Bimestre__: 1
+
+__Atividades__:
+
+- Vantagens de usar programação
+- R como calculadora
+- Tipos de objetos
+- Estatísticas de posição e variabilidade no R
+- Quiz
+
+---
+## 4. Pesquisa jurimétrica utilizando dados da jurisprudência
+__Data__: 25/03/2022
+
+__Tipo__: aula
+
+__Bimestre__: 1
+
+__Atividades__:
+
+- Consulta de jurisprudência do TJSP
+- Análise descritiva
+- Exemplo: boletim
+- Quiz
+
+---
+## 5. Probabilidade e inferência
+__Data__: 01/04/2022
+
+__Tipo__: aula
+
+__Bimestre__: 1
+
+__Atividades__:
+
+- O que é probabilidade
+- O que é inferência estatística
+- Viés e variância
+- Amostragem
+- Quiz
+
+---
+## 6. Pesquisa jurimétrica utilizando classificação manual
+__Data__: 08/04/2022
+
+__Tipo__: aula
+
+__Bimestre__: 1
+
+__Atividades__:
+
+- Formulário de classificação
+- Controle de inconsistências
+- Exemplo: observatório das falências
+- Quiz
+
+---
+## 7. (extra) exemplo de projeto no R
+__Data__: 22/04/2022
+
+__Tipo__: aula
+
+__Bimestre__: 1
+
+__Atividades__:
+
+Reprodução das análises do observatório
+
+__Obs__: emenda de feriado
+
+---
+## 8. Prova 1
+__Data__: 29/04/2022
+
+__Tipo__: prova
+
+__Bimestre__: 1
+
+__Atividades__:
+
+-
+
+---
+## 9. Regressão linear
+__Data__: 06/05/2022
+
+__Tipo__: aula
+
+__Bimestre__: 2
+
+__Atividades__:
+
+- Modelos de regressão
+- Variável resposta e explicativa
+- Intercepto e coeficiente angular
+- Qualidade do ajuste
+- Quiz
+
+---
+## 10. Pesquisa jurimétrica utilizando dados agregados do judiciário
+__Data__: 13/05/2022
+
+__Tipo__: aula
+
+__Bimestre__: 2
+
+__Atividades__:
+
+- Justiça em números
+- Módulo de produtividade mensal
+- Datajud
+- Exemplo: litigiosidade e desenvolvimento
+- Quiz
+
+---
+## 11. Modelagem preditiva
+__Data__: 20/05/2022
+
+__Tipo__: aula
+
+__Bimestre__: 2
+
+__Atividades__:
+
+- Duas culturas
+- IA no direito
+- Sobreajuste
+- Treino/teste
+- Quiz
+
+---
+## 12. Pesquisa jurimétrica utilizando diários de justiça
+__Data__: 27/05/2022
+
+__Tipo__: aula
+
+__Bimestre__: 2
+
+__Atividades__:
+
+- Sobre os diários de justiça
+- Páginas dos diários
+- Método de pesquisa por páginas
+- Exemplo: classificação de textos
+- Quiz
+
+---
+## 13. Tópicos de pesquisa jurimétrica
+__Data__: 03/06/2022
+
+__Tipo__: aula
+
+__Bimestre__: 2
+
+__Atividades__:
+
+- Pesquisa jurimétrica usando sistemas administrativos e dados do executivo
+- Pesquisa jurimétrica usando dados de leis
+- Pesquisa jurimétrica utilizando inteligência artificial
+- Quiz
+
+---
+## 14. Prova 2
+__Data__: 10/06/2022
+
+__Tipo__: prova
+
+__Bimestre__: 2
+
+__Atividades__:
+
+-
+
+---
+## 15. Sub
+__Data__: 17/06/2022
+
+__Tipo__: prova
+
+__Bimestre__: 2
+
+__Atividades__:
+
+-
+
+__Obs__: emenda de feriado
+
+---
+## 16. (extra) exemplo de projeto no R
+__Data__: 24/06/2022
+
+__Tipo__: aula
+
+__Bimestre__: 2
+
+__Atividades__:
+
+Modelagem preditiva e inteligência artificial
+
+---
+## 17. Exame
+__Data__: 01/07/2022
+
+__Tipo__: prova
+
+__Bimestre__: 2
+
+__Atividades__:
+
+-
+
+---
+
+## Notas
+
+Para cada bimestre:
+
+- __Quiz do final da aula__: 50% 
+    - Cada quiz vale 1,0 na nota do bimestre.
+    - Cada quiz terá ~5 questões de múltipla escolha.
+    - Poderemos ter questões extras, valendo __pontos extras__.
+    - Os quizes podem ser feitos individualmente ou em grupo, mas a entrega é individual.
+    - O prazo de cada quiz é de 1 semana: 23h59 da quinta-feira anterior à aula.
+    
+- __Prova__: 50%
+    - Cada prova vale 5,0 na nota do bimestre
+    - A prova poderá ter questões extras, valendo pontos extras. 
+    - Dependendo do andar das aulas, poderemos substituir alguma prova por um trabalho em grupo.
+
+
+---
+class: center, middle, inverse
+
+# 1. Aspectos gerais da pesquisa jurimétrica
+
+---
+class: stats
+
+# O que é jurimetria?
+
+- Jurimetria é a __estatística__ aplicada ao __direito__.
+
+--
+
+- Fazer jurimetria é pensar o direito de forma __concreta__, colocando nosso objeto de estudo no __tempo__ e no __espaço__.
+
+--
+
+&lt;hr/&gt;
+
+.center[
+## Exemplo
+]
+
+.pull-left[
+
+### Estudo clássico
+
+Princípios jurídicos e pensamento de especialistas sobre o valor de indenização por dano moral a ser concedido no contexto de direito do consumidor.
+
+]
+
+--
+
+.pull-right[
+
+### Estudo jurimétrico
+
+Valores típicos de dano moral em sentenças de primeira instância de processos envolvendo direito do consumidor no Tribunal de Justiça de São Paulo em 2021.
+
+]
+
+--
+
+- A jurimetria __complementa__ o estudo clássico do direito, considerando leis, __princípios__ jurídicos e pensamentos abstratos como __hipóteses__ que se manifestam ou não na __realidade__ através das __decisões__ judiciais.
+
+
+---
+class: stats
+
+# Definição de hipóteses
+
+&lt;img src="img/metodologia.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+class: stats
+
+# Ciclo da ciência de dados
+
+Sabemos onde estão os dados. O que fazer?
+
+&lt;img src="img/ciclo-ciencia-de-dados.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+class: jurimetrics
+
+# Nosso dia-a-dia
+
+.pull-left[
+
+#### Download
+
+&lt;img src="img/download_esaj.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+]
+
+--
+
+.pull-right[
+
+#### Arrumação
+
+&lt;img src="img/tidy_esaj.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+]
+
+--
+
+.center[
+
+#### Visualização / Modelagem
+
+]
+
+&lt;img src="img/model_esaj.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+
+---
+class: jurimetrics
+
+## Resumo
+
+__Conceitos__
+
+- Pensar jurimetria é pensar de forma __concreta__
+- A jurimetria é complementar ao estudo clássico do direito, e tem limites
+- Para fazer jurimetria, precisamos de dados!
+
+--
+
+__Metodologia__
+
+- Antes de realizar a coleta, precisamos definir nossas perguntas de pesquisa.
+- Os parâmetros da coleta precisam ser bem especificados.
+- Algumas perguntas podem surgir durante a análise dos dados.
+
+--
+
+__Próxima aula__: Estatística básica.
+
+---
+class: middle, center
+
+# Apoio
+
+.pull-left[
+
+&lt;img src="https://ndtj.com.br/img/logo.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+[Núcleo de Direito, Tecnologia e Jurimetria /  PUC-SP](https://ndtj.com.br)
+
+]
+
+.pull-right[
+
+&lt;img src="https://abj.org.br/assets/logo-home.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+[Associação Brasileira de Jurimetria](https://abj.org.br)
+
+]
+
+
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:11",
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
