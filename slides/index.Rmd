@@ -193,12 +193,6 @@ class: stats
 
 --
 
-<hr/>
-
-.center[
-## Exemplo
-]
-
 .pull-left[
 
 ### Estudo clássico
@@ -219,7 +213,7 @@ Valores típicos de dano moral em sentenças de primeira instância de processos
 
 --
 
-- A jurimetria __complementa__ o estudo clássico do direito, considerando leis, __princípios__ jurídicos e pensamentos abstratos como __hipóteses__ que se manifestam ou não na __realidade__ através das __decisões__ judiciais.
+A jurimetria __complementa__ o estudo clássico do direito, considerando leis, __princípios__ jurídicos e pensamentos abstratos como __hipóteses__ que se manifestam ou não na __realidade__ através das __decisões__ judiciais.
 
 
 ---
@@ -227,9 +221,20 @@ class: stats
 
 # Definição de hipóteses
 
-```{r, out.width="100%"}
-knitr::include_graphics("img/metodologia.png")
-```
+<img src="img/metodologia.png" style="max-width:200%;width:1500px;">
+
+---
+class: stats
+
+# Definição de hipóteses
+
+<img src="img/metodologia.png" style="max-width:200%;width:1500px;margin: 0px 0px 0px -700px;">
+
+
+---
+class: stats, middle, inverse, center
+
+# Exemplo (em sala)
 
 ---
 class: stats
@@ -281,7 +286,6 @@ knitr::include_graphics("img/tidy_esaj.png")
 knitr::include_graphics("img/model_esaj.png")
 ```
 
-
 ---
 class: jurimetrics
 
@@ -297,13 +301,128 @@ __Conceitos__
 
 __Metodologia__
 
-- Antes de realizar a coleta, precisamos definir nossas perguntas de pesquisa.
+- Antes de realizar a coleta, precisamos definir nossas perguntas de pesquisa. Entender a teoria é muito importante!
 - Os parâmetros da coleta precisam ser bem especificados.
 - Algumas perguntas podem surgir durante a análise dos dados.
 
 --
 
-__Próxima aula__: Estatística básica 🤓 
+__Next__: Estatística básica 🤓 
+
+---
+class: middle, center, inverse
+
+# Estatística básica
+
+# 🤓 
+
+---
+class: jurimetrics
+
+# O que é estatística?
+
+- Conjunto de ferramentas e técnicas para tratar dados.
+
+- Fazemos estatísticas para extrair informações sumarizadas de dados.
+
+- Também pode ser pensada como a *metaciência*, ou seja, ela organiza a forma que a ciência funciona.
+
+---
+class: jurimetrics
+
+# Para que serve estatística?
+
+- Usamos estatística para fazer afirmações sobre o desconhecido.
+
+- Detectamos *tendências* para fazer previsões.
+
+- Organizamos processos complexos de decisão.
+
+- Aprendemos a controlar a incerteza que existe no mundo.
+
+---
+
+# Perguntas respondidas com estatística
+
+- __Advogando__: quanto cobrar por esse processo?
+- __No tribunal__: o estoque de processos está caindo?
+- __Na minha empresa__: vale a pena fazer acordo?
+- __No legislativo__: essa lei aumentou a litigiosidade?
+
+---
+
+# Perguntas não respondidas com estatística*
+
+- __Advogando__: qual tese aplicar nesse caso?
+- __No tribunal__: quais temas do direito devem ser especializados?
+- __Na minha empresa__: como prevenir novos conflitos?
+- __No legislativo__: essa lei é justa?
+
+--
+
+__Obs__: essas perguntas podem ser respondidas com estatística a partir de algumas suposições.
+
+---
+
+# O que é um modelo estatístico?
+
+- É uma redução da realidade a partir de uma fórmula matemática.
+
+- Em outras palavras, é a formalização de uma teoria.
+
+- A fórmula é uma representação do *mecanismo de geração dos dados*.
+
+## Exemplos:
+
+- Leis da física (gravidade, por exemplo)
+
+- Distribuição das alturas da turma
+
+---
+class: middle, center, inverse
+
+# Medidas de posição
+
+---
+
+# Média
+
+- É a soma dos valores dividida pela quantidade de valores
+
+- Está presente em tudo: desde as notas da faculdade até as redes neurais
+
+---
+
+# Mediana
+
+- São úteis quando temos dados assimétricos
+
+- [Exemplo da Oprah](https://forum.abj.org.br/t/diferenca-entre-media-e-mediana/84/2)
+
+```{r, out.width="40%"}
+knitr::include_graphics("img/oprah.jpg")
+```
+
+
+---
+
+# Limitações
+
+- Conjuntos de dados muito diferentes levam a estatísticas de posição iguais.
+
+- Exemplo das notas
+
+---
+class: middle, center, inverse
+
+# Medidas de variabilidade
+
+---
+
+# Variância e desvio padrão
+
+- na lousa
+
 
 ---
 class: middle, center
@@ -326,9 +445,7 @@ knitr::include_graphics("https://ndtj.com.br/img/logo.png")
 knitr::include_graphics("https://abj.org.br/assets/logo-home.png")
 ```
 
-[Associação Brasileira de Jurimetria](https://abj.org.br)
-
-]
+[Associação Brasileira de Jurimetria](https://abj.org.br)]
 
 
 
