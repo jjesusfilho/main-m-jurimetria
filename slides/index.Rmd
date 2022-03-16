@@ -509,10 +509,10 @@ class: stats
 ---
 class: stats
 
-## Manipulação
+## Transformação
 
 .pull-left[
-<br>
+<br>        
 - Selecionar colunas
 
 - Filtrar linhas
