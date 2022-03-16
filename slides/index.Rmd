@@ -21,6 +21,13 @@ knitr::opts_chunk$set(
   warning = FALSE,
   fig.align = "center"
 )
+
+blue <- function(x) {
+  glue::glue(
+    '<span style="color:#6495ed; font-weight: bold;">{x}</span>'
+  ) |> 
+    htmltools::HTML()
+}
 ```
 
 
@@ -314,8 +321,6 @@ class: middle, center, inverse
 
 # Estatística básica
 
-# 🤓 
-
 ---
 class: jurimetrics
 
@@ -363,6 +368,7 @@ class: jurimetrics
 __Obs__: essas perguntas podem ser respondidas com estatística a partir de algumas suposições.
 
 ---
+class: stats
 
 # O que é um modelo estatístico?
 
@@ -379,11 +385,23 @@ __Obs__: essas perguntas podem ser respondidas com estatística a partir de algu
 - Distribuição das alturas da turma
 
 ---
-class: middle, center, inverse
+class: stats
+
+# O que é um modelo estatístico?
+
+- Fórmulas matemáticas sempre apresentam erros
+
+- A estatística assume que esses erros existem e colocam isso nas fórmulas, usando *distribuições de probabilidades*
+
+- Por isso, aprender estatística envolve também aprender sobre teoria de probabilidades
+
+---
+class: middle, center, inverse, stats
 
 # Medidas de posição
 
 ---
+class: stats
 
 # Média
 
@@ -392,6 +410,7 @@ class: middle, center, inverse
 - Está presente em tudo: desde as notas da faculdade até as redes neurais
 
 ---
+class: stats
 
 # Mediana
 
@@ -403,8 +422,8 @@ class: middle, center, inverse
 knitr::include_graphics("img/oprah.jpg")
 ```
 
-
 ---
+class: stats
 
 # Limitações
 
@@ -413,15 +432,299 @@ knitr::include_graphics("img/oprah.jpg")
 - Exemplo das notas
 
 ---
-class: middle, center, inverse
+class: middle, center, inverse, stats
 
 # Medidas de variabilidade
 
 ---
+class: stats
 
 # Variância e desvio padrão
 
-- na lousa
+- __Variância__: É a soma dos valores em relação à média (ao quadrado), dividida pela quantidade de observações
+
+- __Desvio padrão__: É a raiz quadrada da variância. A vantagem do desvio padrão é que está na mesma escala dos dados. Por exemplo, se temos uma variável em reais, o desvio padrão está em reais.
+
+---
+class: center, middle, inverse, stats
+
+# Programação
+
+---
+class: stats
+
+# Conteúdo
+
+<center>
+<img src = "img/conteudo.png" width = "80%">
+</center>   
+
+---
+class: stats
+
+## Introdução ao R
+
+.pull-left[
+<br>
+- R e RStudio
+
+- Trabalhando com projetos
+
+- Objetos e funções
+
+- Pacotes
+]
+
+.pull-right[
+<center>
+<img src="img/arte_comunidade.png">
+<a href = "https://github.com/allisonhorst/stats-illustrations" target = "blank_"> <img src = "img/ref_horst.png" width = "75%" style = "margin-top: -30px;"> </a>
+</center>
+]
+
+---
+class: stats
+
+## Importação
+
+.pull-left[
+<br>
+- Arquivos de texto
+
+- Arquivos do excel
+
+- Arquivos de outros softwares (SAS, SPSS)
+
+- Conexão com banco de dados
+]
+
+.pull-right[
+<br>
+<center>
+<img src="img/arte_janitor.png">
+<a href = "https://github.com/allisonhorst/stats-illustrations" target = "blank_"> <img src = "img/ref_horst.png" width = "75%" style = "margin-top: -30px;"> </a>
+</center>
+]
+
+---
+class: stats
+
+## Manipulação
+
+.pull-left[
+<br>
+- Selecionar colunas
+
+- Filtrar linhas
+
+- Criar ou modificar colunas
+
+- Agrupar e sumarizar
+
+- Juntar tabelas
+]
+
+.pull-right[
+<center>
+<img src="img/arte_dplyr.png">
+<a href = "https://github.com/allisonhorst/stats-illustrations" target = "blank_"> <img src = "img/ref_horst.png" width = "75%" style = "margin-top: -30px;"> </a>
+</center>
+]
+
+---
+class: stats
+
+## Visualização
+
+<center>
+<img src="img/arte_ggplot2.png" width = 70%>
+<a href = "https://github.com/allisonhorst/stats-illustrations" target = "blank_"> <img src = "img/ref_horst.png" width = "35%" style = "margin-top: -30px;"> </a>
+</center>
+
+---
+class: stats
+
+## Comunicação
+
+- Relatórios automatizados
+- Dashboards estáticos
+
+<center>
+<img src="img/arte_rmarkdown.png" width = 70%>
+<a href = "https://github.com/allisonhorst/stats-illustrations" target = "blank_"> <img src = "img/ref_horst.png" width = "35%" style = "margin-top: -30px;"> </a>
+</center>
+
+---
+class: stats
+
+## Referência
+
+<br>
+<center>
+<a href = "https://r4ds.had.co.nz">
+<img src="img/r4ds.png" width = 40%> 
+</a>
+</center>
+
+---
+class: middle, center, stats
+
+# As vantagens de analisar dados usando linguagens de programação
+
+---
+class: middle, center, stats
+
+### As principais linguagens para ciência de dados são
+# Código Aberto
+
+---
+class: stats
+
+# O que significa ser código aberto?
+
+<br>
+
+1. Acesso gratuito.
+
+2. Estudantes podem usar as mesmas ferramentas que os profissionais.
+
+3. Possibilita a existência de uma comunidade ativa.
+
+4. Você pode corrigir problemas e aprimorar a linguagem.
+
+5. Você pode desenvovler suas próprias ferramentas.
+
+---
+class: middle, center, stats
+# O código é texto
+
+---
+class: stats
+
+# Podemos copiar e colar
+
+<br>
+<center>
+<img src="img/copy-paste.png" style="width: 70%">
+</center>
+
+---
+class: stats
+
+# Reprodutibilidade
+
+```{r, out.width="100%", echo=FALSE}
+knitr::include_graphics("https://github.com/allisonhorst/stats-illustrations/raw/master/rstats-artwork/reproducibility_court.png")
+```
+
+---
+class: middle, center, stats
+# O código é uma linguagem
+
+---
+class: stats
+
+# Podemos documentar a nossa análise
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(magrittr)
+library(magick)
+library(ggplot2)
+library(dplyr)
+library(viridis)
+```
+
+```{r frink, eval = FALSE, echo=TRUE}
+image_read("https://jeroen.github.io/images/frink.png") |>
+  image_rotate(270) |>
+  image_background("blue", flatten = TRUE) |>
+  image_border("red", "10x10") |>
+  image_annotate("Linguagens de programação ainda\nsão linguagens!",
+                 color = "white", size = 30)
+```
+
+--
+
+.pull-left[
+#### Entrada
+<img src = "https://jeroen.github.io/images/frink.png" style="width:25%">
+]
+
+--
+
+.pull-right[
+#### Saída
+```{r frink-out, ref.label="frink", echo=FALSE}
+
+```
+
+]
+
+---
+class: middle, center, stats
+
+# A relevância do R
+
+---
+class: stats
+
+## O ciclo da ciência de dados
+
+<img src="img/ciclo-ciencia-de-dados.png" style = "display: block; margin-left: auto; margin-right: auto;">
+
+---
+class: stats
+
+## O ciclo da ciência de dados com o R
+
+<img src="img/ciclo-ciencia-de-dados-pacotes.png" style = "display: block; margin-left: auto; margin-right: auto;">
+
+---
+class: middle, center, stats
+
+# Sugestões
+
+---
+class: stats
+
+# Pratique
+
+### O objetivo de hoje é ajudar a quebrar inércia da etapa inicial de aprendizado. Assim como um idioma, o único jeito de aprender uma linguagem de programação é praticando.
+
+<img src="https://media.giphy.com/media/o0vwzuFwCGAFO/giphy.gif" style = "display: block; margin-left: auto; margin-right: auto;">
+
+---
+class: stats
+
+# Pedindo ajuda
+
+.pull-left[
+<br>
+
+- Documentação do R
+- [Discourse Curso-r](https://discourse.curso-r.com)
+- Google
+- Stack Overflow
+]
+
+.pull-right[
+<img src="img/stack.png">
+]
+
+---
+class: stats
+
+# Regras, boas práticas e estilo
+
+<br>
+
+Na grande maioria das vezes, você poderá resolver uma tarefa de diversas maneiras. Isso porque, apesar de existirem várias **regras**, linguagens de programação também possuem **boas práticas** e **estilos**.
+
+- __Regras__: devem ser seguidas para o código funcionar (sintaxe, vocabulário)
+
+- __Boas práticas__: recomenda-se seguir para a criação de códigos legíveis (espaçamento, nomes, organização)
+
+- __Estilo__: cada um pode escolher aquele com o qual se sentir mais à vontade (tipos de indentação, formatação)
 
 
 ---
