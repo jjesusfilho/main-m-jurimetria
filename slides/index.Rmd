@@ -185,7 +185,7 @@ class: middle
 ---
 class: center, middle, inverse
 
-# 1. Aspectos gerais da pesquisa jurimétrica
+# Aspectos gerais da pesquisa jurimétrica
 
 ---
 class: stats
@@ -236,7 +236,6 @@ class: stats
 # Definição de hipóteses
 
 <img src="img/metodologia.png" style="max-width:200%;width:1500px;margin: 0px 0px 0px -700px;">
-
 
 ---
 class: stats, middle, inverse, center
@@ -726,6 +725,193 @@ Na grande maioria das vezes, você poderá resolver uma tarefa de diversas manei
 
 - __Estilo__: cada um pode escolher aquele com o qual se sentir mais à vontade (tipos de indentação, formatação)
 
+---
+class: middle, center, inverse
+
+# Pesquisa jurimétrica usando dados de jurisprudência
+
+(estudos retrospectivos)
+
+---
+class: jurimetrics
+
+# Objetivos de aprendizagem
+
+- Entender sobre estudos prospectivos e retrospectivos
+
+- Entender quando realizar uma análise de jurisprudência
+
+- Fazer uma análise de jurisprudência live coding
+
+---
+class: stats
+
+# Fontes de dados
+
+- __Diários de Justiça__: PDFs gigantescos contendo toda a movimentação judiciária. Não é fácil lista processos a partir desses arquivos. É útil para estudos prospectivos.
+
+--
+
+- __Consulta de jurisprudência__: Ferramentas de pesquisa dos tribunais. É mais fácil de consultar, mas ficamos reféns da qualidade da ferramenta de pesquisa.
+
+--
+
+- __DataJud__: No futuro, teremos uma base de dados acessível e completa disponibilizada pelo CNJ (Resolução 331/2020). 
+
+---
+class: stats
+
+# Estudos prospectivos e retrospectivos
+
+- Estudos __prospectivos__ acompanham processos desde seu __nascimento__, identificado pela data de distribuição, até sua morte, identificada pela sentença, trânsito em julgado, arquivamento, etc. 
+  
+  - Importante em análise de tempos.
+  - Análise de sobrevivência.
+
+--
+
+- Já estudos __retrospectivos__ são aqueles que indexam os processos por alguma data de __desfecho__, como uma sentença, um acórdão ou a data de arquivamento. 
+  
+  - Importante para análise de decisões.
+  - Modelos preditivos.
+
+---
+class: stats
+
+# Estudo prospectivo e retrospectivo
+
+```{r}
+knitr::include_graphics("img/tempos.png")
+```
+
+---
+class: stats
+
+# Estrutura de dados
+
+- __Capa__: contém classe, assunto, vara, comarca, status, indicador de processo digital, local físico, entre outras. 
+
+- __Partes__: contém nomes dos autores e dos réus, advogado e tipo de participação.  
+
+- __Movimentações__: contém datas, títulos e conteúdo de todas as movimentações públicas do processo. São movimentações desde despachos simples, remessas e conclusos até ata de audiências e sentenças completas.
+
+- __Pasta digital__: contém todos os autos do processo, incluindo petição inicial, contestação e outros documentos não publicáveis. Os documentos só estão disponíveis em processos digitais, com acesso somente a advogados e pesquisadores credenciados.
+
+---
+class: jurimetrics
+
+# Tempos em estudos retrospectivos
+
+```{r}
+xaringanExtra::use_panelset()
+```
+
+.panelset[
+
+.panel[.panel-name[O que observamos]
+
+```{r, fig.width=7, fig.height=3.4, dpi=300}
+set.seed(1)
+N <- 400
+tabela <- tibble::tibble(
+  data_entrada = runif(N, 2010, 2021.5),
+  data_saida = data_entrada + rexp(N, 1/5),
+  tempo = data_saida - data_entrada
+) |> 
+  dplyr::mutate(observado = dplyr::if_else(
+    data_saida <= 2021.5, "Observado", "Não observado"
+  ))
+
+tabela |> 
+  dplyr::filter(observado == "Observado") |> 
+  ggplot2::ggplot(ggplot2::aes(data_entrada, tempo)) +
+  ggplot2::geom_point(
+    colour = viridis::viridis(1, 1, .2, .8, 1, "A")
+  ) +
+  ggplot2::geom_abline(
+    slope = -1,
+    intercept = 2021.5,
+    colour = 2, 
+    linetype = 2
+  ) +
+  ggplot2::scale_x_continuous(breaks = 2010:2021) +
+  ggplot2::theme_minimal(12) +
+  ggplot2::ylim(c(0,10)) +
+  ggplot2::labs(x = "Ano entrada", y = "Tempo (anos)")
+```
+
+]
+
+.panel[.panel-name[O que é de verdade]
+
+```{r, fig.width=7, fig.height=3.95, dpi=300}
+tabela |> 
+  ggplot2::ggplot() +
+  ggplot2::aes(data_entrada, tempo, colour = observado,
+               alpha = observado) +
+  ggplot2::geom_point() +
+  ggplot2::geom_abline(
+    slope = -1,
+    intercept = 2021.5,
+    colour = 2, 
+    linetype = 2
+  ) +
+  ggplot2::scale_x_continuous(breaks = 2010:2021) +
+  ggplot2::theme_minimal(12) +
+  ggplot2::labs(
+    x = "Ano entrada", y = "Tempo (anos)", 
+    colour = "", alpha = ""
+  ) +
+  ggplot2::scale_colour_viridis_d(
+    option = "A", begin = .2, end = .8, direction = -1
+  ) +
+  ggplot2::ylim(c(0,10)) +
+  ggplot2::scale_alpha_discrete(range = c(.4, 1)) +
+  ggplot2::theme(legend.position = "bottom")
+```
+
+]
+
+
+]
+
+
+```{r eval=FALSE}
+set.seed(2)
+s <- sample(tjsp2inst::tjsp2inst$info_valor, 5)
+cat(scales::dollar(
+  s, 
+  prefix = "R$ ", big.mark = ".", decimal.mark = ",", accuracy = 0.01
+), sep = ", ")
+
+cat(scales::dollar(
+  c(mean(s), median(s), var(s), sd(s)),
+  prefix = "R$ ", big.mark = ".", decimal.mark = ",", accuracy = 0.01
+), sep = "  | ")
+
+
+```
+
+
+---
+class: stats
+
+# Análise de tempos
+
+- Quando o estudo é prospectivo, utilizamos uma técnica chamada __análise de sobrevivência__.
+
+- A técnica é capaz de lidar corretamente com casos que ainda estão ativos no momento da análise. Denominamos esses casos como __censura__.
+
+- A censura é capaz de lidar com informações incompletas. No nosso caso, sabemos que um processo ativo nascido em janeiro de 2021 durou __pelo menos 7 meses__ até agora.
+
+---
+class: case
+
+# Exemplo!
+
+```{r}
+knitr::include_graphics("img/cat.gif")
+```
 
 ---
 class: middle, center

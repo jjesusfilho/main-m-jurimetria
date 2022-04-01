@@ -3,8 +3,10 @@
   <head>
     <title>Metodologia de Pesquisa Jurimétrica</title>
     <meta charset="utf-8" />
-    <script src="libs/header-attrs-2.11/header-attrs.js"></script>
+    <script src="libs/header-attrs-2.13/header-attrs.js"></script>
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset-0.2.6/panelset.js"></script>
     <link rel="stylesheet" href="css/xaringan-themer.css" type="text/css" />
     <link rel="stylesheet" href="css/custom-css.css" type="text/css" />
   </head>
@@ -133,6 +135,8 @@ __Atividades__:
 - Fontes de dados
 - Estudo prospectivo e retrospectivo
 
+__Obs__: aula 1, não tem quiz
+
 ---
 ## 2. Estatística básica
 __Data__: 11/03/2022
@@ -166,8 +170,24 @@ __Atividades__:
 - Quiz
 
 ---
-## 4. Pesquisa jurimétrica utilizando dados da jurisprudência
+## 4. Introdução à programação em R
 __Data__: 25/03/2022
+
+__Tipo__: aula
+
+__Bimestre__: 1
+
+__Atividades__:
+
+- Vantagens de usar programação
+- R como calculadora
+- Tipos de objetos
+- Estatísticas de posição e variabilidade no R
+- Quiz
+
+---
+## 5. Pesquisa jurimétrica utilizando dados da jurisprudência
+__Data__: 01/04/2022
 
 __Tipo__: aula
 
@@ -178,22 +198,6 @@ __Atividades__:
 - Consulta de jurisprudência do TJSP
 - Análise descritiva
 - Exemplo: boletim
-- Quiz
-
----
-## 5. Probabilidade e inferência
-__Data__: 01/04/2022
-
-__Tipo__: aula
-
-__Bimestre__: 1
-
-__Atividades__:
-
-- O que é probabilidade
-- O que é inferência estatística
-- Viés e variância
-- Amostragem
 - Quiz
 
 ---
@@ -212,21 +216,7 @@ __Atividades__:
 - Quiz
 
 ---
-## 7. (extra) exemplo de projeto no R
-__Data__: 22/04/2022
-
-__Tipo__: aula
-
-__Bimestre__: 1
-
-__Atividades__:
-
-Reprodução das análises do observatório
-
-__Obs__: emenda de feriado
-
----
-## 8. Prova 1
+## 7. Prova 1
 __Data__: 29/04/2022
 
 __Tipo__: prova
@@ -238,8 +228,24 @@ __Atividades__:
 -
 
 ---
-## 9. Regressão linear
+## 8. Probabilidade e inferência
 __Data__: 06/05/2022
+
+__Tipo__: aula
+
+__Bimestre__: 1
+
+__Atividades__:
+
+- O que é probabilidade
+- O que é inferência estatística
+- Viés e variância
+- Amostragem
+- Quiz
+
+---
+## 9. Regressão linear
+__Data__: 13/05/2022
 
 __Tipo__: aula
 
@@ -255,7 +261,7 @@ __Atividades__:
 
 ---
 ## 10. Pesquisa jurimétrica utilizando dados agregados do judiciário
-__Data__: 13/05/2022
+__Data__: 20/05/2022
 
 __Tipo__: aula
 
@@ -271,7 +277,7 @@ __Atividades__:
 
 ---
 ## 11. Modelagem preditiva
-__Data__: 20/05/2022
+__Data__: 27/05/2022
 
 __Tipo__: aula
 
@@ -286,23 +292,7 @@ __Atividades__:
 - Quiz
 
 ---
-## 12. Pesquisa jurimétrica utilizando diários de justiça
-__Data__: 27/05/2022
-
-__Tipo__: aula
-
-__Bimestre__: 2
-
-__Atividades__:
-
-- Sobre os diários de justiça
-- Páginas dos diários
-- Método de pesquisa por páginas
-- Exemplo: classificação de textos
-- Quiz
-
----
-## 13. Tópicos de pesquisa jurimétrica
+## 12. Tópicos de pesquisa jurimétrica
 __Data__: 03/06/2022
 
 __Tipo__: aula
@@ -311,13 +301,14 @@ __Bimestre__: 2
 
 __Atividades__:
 
+- Pesquisa jurimétrica utilizando diários de justiça
 - Pesquisa jurimétrica usando sistemas administrativos e dados do executivo
 - Pesquisa jurimétrica usando dados de leis
 - Pesquisa jurimétrica utilizando inteligência artificial
 - Quiz
 
 ---
-## 14. Prova 2
+## 13. Prova 2
 __Data__: 10/06/2022
 
 __Tipo__: prova
@@ -329,7 +320,7 @@ __Atividades__:
 -
 
 ---
-## 15. Sub
+## 14. Sub
 __Data__: 17/06/2022
 
 __Tipo__: prova
@@ -343,7 +334,7 @@ __Atividades__:
 __Obs__: emenda de feriado
 
 ---
-## 16. (extra) exemplo de projeto no R
+## 15. (extra) exemplo de projeto no R
 __Data__: 24/06/2022
 
 __Tipo__: aula
@@ -355,7 +346,7 @@ __Atividades__:
 Modelagem preditiva e inteligência artificial
 
 ---
-## 17. Exame
+## 16. Exame
 __Data__: 01/07/2022
 
 __Tipo__: prova
@@ -399,7 +390,7 @@ class: middle
 ---
 class: center, middle, inverse
 
-# 1. Aspectos gerais da pesquisa jurimétrica
+# Aspectos gerais da pesquisa jurimétrica
 
 ---
 class: stats
@@ -450,7 +441,6 @@ class: stats
 # Definição de hipóteses
 
 &lt;img src="img/metodologia.png" style="max-width:200%;width:1500px;margin: 0px 0px 0px -700px;"&gt;
-
 
 ---
 class: stats, middle, inverse, center
@@ -921,6 +911,121 @@ Na grande maioria das vezes, você poderá resolver uma tarefa de diversas manei
 
 - __Estilo__: cada um pode escolher aquele com o qual se sentir mais à vontade (tipos de indentação, formatação)
 
+---
+class: middle, center, inverse
+
+# Pesquisa jurimétrica usando dados de jurisprudência
+
+(estudos retrospectivos)
+
+---
+class: jurimetrics
+
+# Objetivos de aprendizagem
+
+- Entender sobre estudos prospectivos e retrospectivos
+
+- Entender quando realizar uma análise de jurisprudência
+
+- Fazer uma análise de jurisprudência live coding
+
+---
+class: stats
+
+# Fontes de dados
+
+- __Diários de Justiça__: PDFs gigantescos contendo toda a movimentação judiciária. Não é fácil lista processos a partir desses arquivos. É útil para estudos prospectivos.
+
+--
+
+- __Consulta de jurisprudência__: Ferramentas de pesquisa dos tribunais. É mais fácil de consultar, mas ficamos reféns da qualidade da ferramenta de pesquisa.
+
+--
+
+- __DataJud__: No futuro, teremos uma base de dados acessível e completa disponibilizada pelo CNJ (Resolução 331/2020). 
+
+---
+class: stats
+
+# Estudos prospectivos e retrospectivos
+
+- Estudos __prospectivos__ acompanham processos desde seu __nascimento__, identificado pela data de distribuição, até sua morte, identificada pela sentença, trânsito em julgado, arquivamento, etc. 
+  
+  - Importante em análise de tempos.
+  - Análise de sobrevivência.
+
+--
+
+- Já estudos __retrospectivos__ são aqueles que indexam os processos por alguma data de __desfecho__, como uma sentença, um acórdão ou a data de arquivamento. 
+  
+  - Importante para análise de decisões.
+  - Modelos preditivos.
+
+---
+class: stats
+
+# Estudo prospectivo e retrospectivo
+
+&lt;img src="img/tempos.png" width="1537" style="display: block; margin: auto;" /&gt;
+
+---
+class: stats
+
+# Estrutura de dados
+
+- __Capa__: contém classe, assunto, vara, comarca, status, indicador de processo digital, local físico, entre outras. 
+
+- __Partes__: contém nomes dos autores e dos réus, advogado e tipo de participação.  
+
+- __Movimentações__: contém datas, títulos e conteúdo de todas as movimentações públicas do processo. São movimentações desde despachos simples, remessas e conclusos até ata de audiências e sentenças completas.
+
+- __Pasta digital__: contém todos os autos do processo, incluindo petição inicial, contestação e outros documentos não publicáveis. Os documentos só estão disponíveis em processos digitais, com acesso somente a advogados e pesquisadores credenciados.
+
+---
+class: jurimetrics
+
+# Tempos em estudos retrospectivos
+
+
+
+.panelset[
+
+.panel[.panel-name[O que observamos]
+
+&lt;img src="index_files/figure-html/unnamed-chunk-13-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+.panel[.panel-name[O que é de verdade]
+
+&lt;img src="index_files/figure-html/unnamed-chunk-14-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+
+
+]
+
+
+
+
+
+---
+class: stats
+
+# Análise de tempos
+
+- Quando o estudo é prospectivo, utilizamos uma técnica chamada __análise de sobrevivência__.
+
+- A técnica é capaz de lidar corretamente com casos que ainda estão ativos no momento da análise. Denominamos esses casos como __censura__.
+
+- A censura é capaz de lidar com informações incompletas. No nosso caso, sabemos que um processo ativo nascido em janeiro de 2021 durou __pelo menos 7 meses__ até agora.
+
+---
+class: case
+
+# Exemplo!
+
+&lt;img src="img/cat.gif" style="display: block; margin: auto;" /&gt;
 
 ---
 class: middle, center
