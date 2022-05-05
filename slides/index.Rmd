@@ -1061,6 +1061,712 @@ class: case
 
 - Corrigimos as informações na fonte de dados, que alimentam os trabalhos.
 
+---
+class: inverse, middle, center
+
+# Modelagem
+
+---
+
+# Objetivos de aprendizagem
+
+#### Contextualizar sobre a aplicação de jurimetria em empresas
+
+#### Diferenças entre inferência e predição
+
+#### Conhecer a regressão linear simples
+
+#### Conhecer como funcionam e para que servem modelos preditivos
+
+---
+class: jurimetrics
+
+# Lawtechs
+
+- [AB2L](https://ab2l.org.br/radar-lawtechs/) surgiu em 2016
+- Brasil apresenta um dos maiores mercados mercados
+
+```{r}
+knitr::include_graphics("img/lawtechs.png")
+```
+
+---
+class: jurimetrics
+
+# Ciclo de maturidade de dados
+
+```{r, out.width="60%"}
+knitr::include_graphics("img/maturidade-dados.png")
+```
+
+---
+class: jurimetrics
+
+# Cenário atual
+
+- Por conta da dificuldade de acesso aos dados, ainda existe oportunidade para empresas especializadas em __extração de dados__.
+
+- A maior parte das aplicações que vimos hoje são relacionadas a __visualização de dados__, com algumas aplicações pontuais de __modelagem__.
+
+--
+
+- A tomada de __decisão baseada em dados__ ainda é bastante incipente no mercado atual (mesmo que as empresas não falem isso explicitamente).
+
+> Fake it until you make it.
+> 
+> Simon & Garfunkel (?)
+
+---
+class: jurimetrics
+
+```{r}
+knitr::include_graphics("img/jurimetria_empresas.png")
+```
+
+---
+class: jurimetrics
+
+# Regressão Linear ("duas culturas")
+
+* Predição
+* Inferência
+
+## Predição
+
+Em muitas situações X está disponível facilmente mas, Y não é fácil de descobrir. (Ou mesmo não é possível descobrí-lo).
+
+$$\hat{Y} = \hat{f}(X)$$
+
+Neste caso não estamos interessados em como é a estrutura $\hat{f}$ desde que ela apresente predições boas para $Y$.
+
+Por exemplo:
+
+Meu processo caiu com certo Juiz. Vou ganhar ou perder?
+
+---
+class: jurimetrics
+
+# Regressão Linear ("duas culturas")
+
+* Predição
+* Inferência
+
+## Inferência
+
+Em inferência estamos mais interessados em entender a relação entre as variáveis explciativas $X$ e a variável resposta $Y$.
+
+Por exemplo:
+
+* O perfil do juiz está relacionado com o resultado do processo?
+
+---
+class: stats
+
+## Referências
+
+- [Aprendizagem de Máquinas: Uma Abordagem Estatística (Rafael Izbicki e Thiago Mendonça, 2020)](http://www.rizbicki.ufscar.br/AME.pdf)
+
+- [Introduction to Statistical Learning (Hastie, et al)](http://faculty.marshall.usc.edu/gareth-james/ISL/ISLR%20Seventh%20Printing.pdf)
+
+- [Ciência de Dados: Fundamentos e Aplicações](https://curso-r.github.io/main-regressao-linear/referencias/Ci%C3%AAncia%20de%20Dados.%20Fundamentos%20e%20Aplica%C3%A7%C3%B5es.%20Vers%C3%A3o%20parcial%20preliminar.%20maio%20Pedro%20A.%20Morettin%20Julio%20M.%20Singer.pdf)
+
+
+---
+class: stats
+
+## O que é e quando usar
+
+
+.pull-left[
+
+### Regressão Linear Simples
+
+$$
+y = \beta_0 + \beta_1x
+$$
+
+### Exemplo: 
+
+$$
+dist = \beta_0 + \beta_1speed
+$$
+
+
+]
+
+
+.pull-right[
+
+```{r}
+grafico_da_reta <- ggplot(cars) + 
+  geom_point(aes(x = speed, y = dist), size = 5)  +
+  theme_minimal(24)+
+  labs(
+    title = " "
+  ) 
+grafico_da_reta
+```
+
+]
+
+
+.footnote[
+Ver [ISL](https://www.ime.unicamp.br/~dias/Intoduction%20to%20Statistical%20Learning.pdf) página 61 (Simple Linear Regression).
+]
+
+
+
+---
+class: stats
+
+## O que é e quando usar
+
+
+.pull-left[
+
+### Regressão Linear Simples
+
+$$
+y = \beta_0 + \beta_1x
+$$
+
+### Exemplo: 
+
+$$
+dist = \beta_0 + \beta_1speed
+$$
+
+
+]
+
+
+.pull-right[
+
+```{r}
+grafico_da_reta_escolhida_a_mao <- grafico_da_reta + 
+  geom_abline(
+    intercept = 12, 
+    slope = 3, 
+    size = 3,
+    colour = "royalblue"
+  ) +
+  labs(
+    title = "Reta escolhida a mão (no olho!)"
+  ) 
+grafico_da_reta_escolhida_a_mao
+```
+
+]
+
+
+.footnote[
+Ver [ISL](https://www.ime.unicamp.br/~dias/Intoduction%20to%20Statistical%20Learning.pdf) página 61 (Simple Linear Regression).
+]
+
+
+
+---
+class: stats
+
+## O que é e quando usar
+
+
+.pull-left[
+
+### Regressão Linear Simples
+
+$$
+y = \beta_0 + \beta_1x
+$$
+
+### Exemplo: 
+
+$$
+dist = \beta_0 + \beta_1speed
+$$
+
+
+]
+
+
+.pull-right[
+
+```{r}
+# ajuste de uma regressão linear simples no R
+melhor_reta <- lm(dist ~ speed, data = cars)
+grafico_da_melhor_reta <- grafico_da_reta_escolhida_a_mao +
+  geom_abline(
+    intercept = melhor_reta$coefficients[1], 
+    slope =     melhor_reta$coefficients[2], 
+    size = 3,
+    colour = "salmon"
+  ) +
+  labs(
+    title = "Agora com a Melhor Reta."
+  )+
+  theme_minimal(24)
+grafico_da_melhor_reta
+```
+
+]
+
+.footnote[
+Ver [ISL](https://www.ime.unicamp.br/~dias/Intoduction%20to%20Statistical%20Learning.pdf) página 61 (Simple Linear Regression).
+]
+
+
+---
+class: stats
+
+## O que é e quando usar
+
+
+.pull-left[
+
+### Regressão Linear Simples
+
+$$
+y = \beta_0 + \beta_1x
+$$
+
+]
+
+
+.pull-right[
+
+
+]
+
+```{r, echo = TRUE}
+# ajuste de uma regressão linear simples no R
+melhor_reta <- lm(dist ~ speed, data = cars) #<<
+melhor_reta
+```
+
+
+
+.footnote[
+Ver [ISL](https://www.ime.unicamp.br/~dias/Intoduction%20to%20Statistical%20Learning.pdf) página 61 (Simple Linear Regression).
+]
+
+---
+class: stats
+
+## Interpretação dos parâmetros
+
+.pull-left[
+
+```{r}
+grafico_cars <- ggplot2::ggplot(cars, ggplot2::aes(x = speed, y = dist)) + 
+  ggplot2::geom_point(size = 5, alpha = 0.1) + 
+  ggplot2::geom_abline(
+    intercept = melhor_reta$coefficients[1], 
+    slope =     melhor_reta$coefficients[2], 
+    size = 2,
+    colour = "salmon"
+  ) 
+grafico_cars+
+  ggplot2::coord_cartesian(xlim = c(-4, 26), ylim = c(-25, 126)) +
+  ggplot2::annotate("segment", 
+           y = melhor_reta$coefficients[1] + melhor_reta$coefficients[2] * 15,
+           yend = melhor_reta$coefficients[1] + melhor_reta$coefficients[2] * 15,
+           x = 15,
+           xend = 19,
+           size = 2,
+           colour = "darkgreen") +
+  ggplot2::annotate("segment", 
+           y = melhor_reta$coefficients[1] + melhor_reta$coefficients[2] * 15,
+           yend = melhor_reta$coefficients[1] + melhor_reta$coefficients[2] * 19,
+           x = 19,
+           xend = 19,
+           size = 2,
+           colour = "darkgreen") +
+  ggplot2::annotate("segment", 
+           y = melhor_reta$coefficients[1],
+           yend = 0,
+           x = 0,
+           xend = 0,
+           size = 2,
+           colour = "darkblue") +
+  ggplot2::geom_vline(xintercept = 0, colour = "grey20") +
+  ggplot2::geom_hline(yintercept = 0, colour = "grey20") +
+  ggplot2::theme_minimal(24)
+```
+
+$$
+y = \color{darkgblue}{\beta_0} + \color{darkgreen}{\beta_1}x
+$$
+
+]
+
+.pull-right[
+
+### Interpretações matemáticas
+
+$\color{darkgblue}{\beta_0}$ é o lugar em que a reta cruza o eixo Y.
+
+$\color{darkgreen}{\beta_1}$ é a derivada de Y em relação ao X. É quanto Y varia quando X varia em 1 unidade.
+
+### Interpretações estatísticas
+
+$\color{darkgblue}{\beta_0}$ é a distância percorrida esperada quando o carro está parado (X = 0).
+
+$\color{darkgreen}{\beta_1}$ é o efeito médio na distância por variar 1 ml/h na velocidade do carro.
+
+
+]
+
+
+---
+class: stats
+
+## "Melhor Reta" segundo o quê?
+
+Queremos a reta que **erre menos**.
+
+Uma medida de erro: **E**rro **Q**uadrático **M**édio.
+
+Calculado fazendo-se a média dos erros ao quadrado. A fórmula parece com a variância:
+
+$$
+EQM = \frac 1 N \left((y_1-\hat{y_1})^2 + (y_2-\hat{y_2})^2 + \cdots + (y_N-\hat{y_N})^2\right)
+$$
+
+Usando o símbolo da soma $\sum$:
+
+$$
+EQM = \frac{1}{N}\sum(y_i - \hat{y_i})^2
+$$
+
+
+---
+class: stats
+
+## "Melhor Reta" segundo o quê?
+
+Queremos a reta que **erre menos**.
+
+Uma medida de erro: **E**rro **Q**uadrático **M**édio.
+
+Substituindo $\hat y$ pela sua definição:
+
+$$
+EQM = \frac{1}{N}\sum(y_i - (\hat{\beta_0} + \hat{\beta_1}x_i))^2
+$$
+
+--
+
+```{r, fig.width=10, fig.height=4, warning=FALSE}
+cars_com_predicoes <- melhor_reta |> 
+  broom::augment() |>
+  dplyr::rename(pred_melhor_reta = .fitted) |>
+  dplyr::mutate(
+    pred_reta_a_mao = 12 + 3 * speed
+  )
+grafico_residuos_melhor_reta <- cars_com_predicoes |>
+  ggplot2::ggplot(ggplot2::aes(x = speed, y = dist)) +
+  ggplot2::geom_point(size = 2) +
+  ggplot2::geom_abline(
+    intercept = melhor_reta$coefficients[1], 
+    slope =     melhor_reta$coefficients[2], 
+    size = 1,
+    colour = "salmon"
+  ) +
+  ggplot2::geom_segment(ggplot2::aes(xend = speed, yend = pred_melhor_reta), colour = "blue", size = 1) +
+  ggplot2::labs(
+    subtitle = "Resíduos da Melhor Reta",
+    title = "Os segmentos azuis quantificam o \nquanto o modelo errou naqueles pontos."
+  ) +
+  ggplot2::annotate("text", x = 5, y = 110, label = expression(y==-17.579 + 3.932 ~ "speed"), parse = TRUE, hjust = 0, size = 6)
+grafico_residuos_reta_a_mao <- cars_com_predicoes |>
+  ggplot2::ggplot(aes(x = speed, y = dist)) +
+  ggplot2::geom_point(size = 2) +
+  ggplot2::geom_abline(
+    intercept = 12, 
+    slope =     3, 
+    size = 1,
+    colour = "orange"
+  ) +
+  ggplot2::geom_segment(aes(xend = speed, yend = pred_reta_a_mao), colour = "blue", size = 1) +
+  ggplot2::labs(
+    subtitle = "Resíduos da Reta Escolhida a Mão"
+  ) +
+  ggplot2::annotate("text", x = 5, y = 110, label = expression(y==12 + 3 ~ "speed"), parse = TRUE, hjust = 0, size = 6)
+patchwork::wrap_plots(
+  grafico_residuos_melhor_reta, grafico_residuos_reta_a_mao
+)
+
+```
+
+
+---
+class: stats
+
+## "Melhor Reta" segundo o quê?
+
+Queremos a reta que **erre menos**.
+
+Uma medida de erro: **E**rro **Q**uadrático **M**édio.
+
+$$
+EQM = \frac{1}{N}\sum(y_i - \hat{y_i})^2
+$$
+
+Ou seja, nosso **objetivo** é
+
+## Encontrar $\hat{\beta}_0$ e $\hat{\beta}_1$ que nos retorne o **menor** EQM
+
+--
+
+... que é o mesmo que dizer "encontrar a melhor reta que explique os dados".
+
+---
+class: stats
+
+## Depois de estimar...
+
+$$
+\hat{y} = \hat{\beta}_0 + \hat{\beta}_1x
+$$
+
+### Exemplo:
+
+$$
+\hat{dist} = \hat{\beta}_0 + \hat{\beta}_1speed
+$$
+
+Colocamos um $\hat{}$ em cima dos termos para representar "estimativas". Ou seja, $\hat{y}_i$ é uma estimativa de $y_i$.
+
+No nosso exemplo, 
+
+- $\hat{\beta}_0$ é uma estimativa de $\beta_0$ e vale `-17.579`.
+- $\hat{\beta}_1$ é uma estimativa de $\beta_1$ e vale `3.932`.
+- $\hat{dist}$ é uma estimativa de $dist$ e vale `-17.579 + 3.932 x speed`.
+
+
+---
+class: case
+
+# Exemplo!
+
+```{r}
+knitr::include_graphics("img/cat.gif")
+```
+
+
+---
+class: stats
+
+# Modelagem preditiva
+
+- Área da estatística destinada à construção de __modelos estatísticos__ capazes de fornecer boas predições para determinado fenômeno.
+
+- Melhor introdução para o tema: [ISLR](https://www.statlearning.com)
+
+```{r}
+knitr::include_graphics("img/islr.png")
+```
+
+- __Machine learning__ e __statistical learning__ são __sinônimos__.
+
+---
+class: stats
+
+# O que é um modelo preditivo?
+
+Paradigma programação vs paradigma do aprendizado estatístico.
+
+.pull-left[
+
+```{r}
+knitr::include_graphics("img/ia_esquerda.png")
+```
+
+]
+
+--
+
+.pull-right[
+
+```{r}
+knitr::include_graphics("img/ia_direita.png")
+```
+
+]
+
+---
+class: stats
+
+# Mas e as redes neurais?
+
+- Redes neurais / deep learning é uma área de aprendizado de máquinas (aprendizado estatístico).
+
+```{r, out.width="60%"}
+knitr::include_graphics("img/artificial-intelligence.png")
+```
+
+---
+class: stats
+
+# Mas e a inteligência artificial?!
+
+```{r, out.width="60%"}
+knitr::include_graphics("img/ml-stats.jpeg")
+```
+
+A inteligência artificial *está* machine learning nos dias de hoje.
+
+---
+class: stats
+
+# Inputs e outputs
+
+- Nós temos inputs e outputs, e queremos predizer um output que ainda não existe a patir de um input que temos em mãos.
+
+- Por exemplo, queremos predizer o resultado de um processo (output) com base nas suas características (input).
+
+- Geralmente associamos os inputs à variável $X$ e os outputs à variável $Y$.
+
+- Queremos criar uma função (uma fórmula) $g$ que, a partir de um $X$, consegue dar um valor de $Y$
+
+$$Y = g(X)$$
+
+---
+class: stats
+
+# Sobreajuste
+
+Para isso, podemos aplicar um modelo super complexo, que se ajusta perfeitamente aos dados que eu observo, como se cada caso fosse um caso...
+
+```{r, out.width="80%"}
+knitr::include_graphics("img/overfiting_sem_teste.gif")
+```
+
+Fonte: [Curso-R](https://curso-r.com)
+
+---
+class: stats
+
+# Erro de generalização
+
+- Um modelo de aprendizado estatístico precisa funcionar bem para bases que nós __não observamos__. Para isso, tentamos criar um modelo que se adeque bem aos dados que observamos.
+
+```{r}
+knitr::include_graphics("img/alvo.jpg")
+```
+
+---
+class: stats
+
+# Sobreajuste
+
+... mas quando eu vou aplicar isso no mundo real, os modelos mais complicados não se aplicam.
+
+```{r, out.width="80%"}
+knitr::include_graphics("img/overfiting_com_teste.gif")
+```
+
+Fonte: [Curso-R](https://curso-r.com)
+
+---
+class: stats
+
+# Sobreajuste
+
+No fundo, preciso escolher um modelo que seja suficientemente complexo para captar o __sinal__ (tendência) do fenômeno estudado, sem com isso fazer com que meu modelo seja suscetível a __ruídos__ (erros aleatórios),
+
+```{r}
+knitr::include_graphics("img/overfiting_scatter_eqm.gif")
+```
+
+Fonte: [Curso-R](https://curso-r.com)
+
+---
+class: stats
+
+# Treino e teste
+
+- Para lidar com esse problema, separamos nossa base em duas: uma base de __treino__ e uma base de __teste__. 
+
+- Na base de treino, ajustamos nosso modelo. Na base de teste, testamos o quão bom está o modelo. Dessa forma, não tem como sermos enganados pelo sobreajuste.
+
+- A base de treino, por sua vez, passa por um procedimento chamado __validação cruzada__, que consiste em testar vários modelos escondendo uma parte da base de treino e testando os melhores candidatos.
+
+
+---
+class: case
+
+# Sobre o case
+
+__Objetivos__: Visualização e modelagem de dados a partir de uma base de uma lista de processos enviada pela Vivo.
+
+__Recorte temporal__: processos distribuídos entre 2009 e 2019.
+
+__Recorte regional__: Processos distribuídos em 6 comarcas distintas: Fernandópolis, Jales, Palmeira D'Oeste, Presidente Prudente, Santa Fé do Sul e São José do Rio Preto.
+
+__Recorte de escopo__: Processos relacionados a direito do consumidor com a Vivo no polo passivo.
+
+---
+class: stats
+
+# O Dashboard
+
+```{r}
+knitr::include_graphics("img/vivopoc.gif")
+```
+
+
+---
+class: case
+
+# Voltando ao case
+
+```{r}
+knitr::include_graphics("img/diagnostico.png")
+```
+
+- Acurácia do modelo: 88%. É bom?
+
+- Precisão do modelo: 89%.
+
+---
+class: case
+
+# Aprendizado estatístico interpretável
+
+Art. 20 da LGPD: 
+
+> § 1º O controlador deverá fornecer, sempre que solicitadas, informações claras e adequadas a respeito dos critérios e dos procedimentos utilizados para a decisão automatizada, observados os segredos comercial e industrial.
+
+
+- Conforme obtemos mais dados, conseguimos ajustar modelos cada vez mais complexos.
+
+- Modelos mais complexos são mais difíceis de interpretar: não tem só um $X$ para explicar o $Y$, e as funções $g$ podem ser bem complicadas de ler por seres humanos.
+
+---
+class: case
+
+# Machine Leaning Interpretável
+
+Uma das áreas de pesquisa que mais cresce na atualidade é a de intepretação de modelos. O problema de *fairness* é igualmente relevante, e também é levada em conta na área de interpretabilidade.
+
+Livro: [Interpretable Machine Learning](https://christophm.github.io/interpretable-ml-book/).
+
+```{r, out.width="50%"}
+knitr::include_graphics("img/iml.jpg")
+```
+
+---
+
+# Resumo
+
+- Aprendizado de máquinas é o mesmo que __aprendizado estatístico__, e inteligência artificial é uma área do conhecimento que contém como área mais importante (atualmente) o aprendizado de máquinas.
+
+- Modelos preditivos buscam minimizar o erro de generalização. Para isso, precisamos separar a base entre __treino__ e __teste__.
+
+- Um modelo pode otimizar __métricas diferentes__, e essas métricas dependem do modelo de negócio.
+
+
 
 ---
 class: middle, center
