@@ -847,8 +847,7 @@ tabela |>
 ```{r, fig.width=7, fig.height=3.95, dpi=300}
 tabela |> 
   ggplot2::ggplot() +
-  ggplot2::aes(data_entrada, tempo, colour = observado,
-               alpha = observado) +
+  ggplot2::aes(data_entrada, tempo, colour = observado, alpha = observado) +
   ggplot2::geom_point() +
   ggplot2::geom_abline(
     slope = -1,
@@ -1766,7 +1765,185 @@ knitr::include_graphics("img/iml.jpg")
 
 - Um modelo pode otimizar __métricas diferentes__, e essas métricas dependem do modelo de negócio.
 
+---
+class: middle, center, inverse
 
+# Tópicos de Jurimetria
+
+---
+
+# Tópicos
+
+### Teoria da decisão
+
+### Causalidade
+
+### Priest & Klein
+
+---
+
+# Teoria da decisão
+
+- Área do conhecimento que envolve tomar decisões *racionais* em um ambiente de incerteza
+
+- A maior parte dos modelos estatísticos podem ser pensados como problemas de teoria da decisão
+
+---
+
+# Exemplo: guarda-chuva
+
+**Pergunta**: Devo levar guarda-chuva quando sair de casa?
+
+**Utilidade/perda**: Quanto eu fico feliz ou triste em cada situação
+
+**Probabilidade**: Qual a probabilidade do evento ocorrer
+
+--
+
+## Exemplo no excel
+
+---
+class: middle, inverse, center
+
+# Causalidade
+
+---
+
+# O que é causalidade?
+
+A pesquisa em causalidade busca descobrir uma relação funcional entre duas ou mais variáveis. Por exemplo:
+
+$$
+y = f(x) = a + bx
+$$
+
+No mundo real, observamos essa relação com ruídos. O importante é que esse ruído não tenha relação com outras variáveis que explicam o fenômeno. Exemplo:
+
+$$
+y = f(x) = a + bx + \varepsilon, \ \ \varepsilon\sim\mathcal N(0,\sigma^2)
+$$
+
+---
+
+# Três passos da causalidade
+
+Vamos pensar em um problema onde estamos estudando se a grama fica molhada, observando o céu e um regador.
+
+--
+
+- __Predição__: dado que eu observei o regador funcionando, qual a probabilidade da grama estar molhada? 2) dado que eu observei o céu nublado, qual a probabilidade da grama estar molhada?  
+
+--
+
+- __Intervenção__: se eu girar o regador, qual a probabilidade da grama se molhar? 2) Se eu fizer a dança da chuva, qual a probabilidade da grama se molhar?
+
+--
+
+- __Contrafactual__: Sabendo que eu observei o regador desligado e o chão seco, qual a probabilidade do chão estar molhado se eu tivesse ligado o regador? 2) Sabendo que eu observei o céu azul e o chão seco, qual a probabilidade do chão estar molhado se eu tivesse feito a dança da chuva?
+
+---
+
+# Judea Pearl
+
+```{r, echo=FALSE, out.width="100%"}
+knitr::include_graphics("img/judeapearl.png")
+```
+
+---
+
+# Três estruturas básicas
+
+--
+
+### Mediadores
+
+A -> B -> C
+
+--
+
+### Confundidores / garfos
+
+A <- B -> C
+
+--
+
+### Colisores
+
+A -> B <- C
+
+---
+
+# Paradoxos
+
+## Monty Hall
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("img/montyhallproblem.png")
+```
+
+---
+
+## Colisor!
+
+```{r, fig.align="center", echo=FALSE}
+DiagrammeR::grViz("
+digraph lr {
+  # a 'graph' statement
+  rankdir=LR
+  node [shape = circle, fixedsize = true, width = 0.9]
+  Escolha1;Carro;
+  node [shape = circle, fixedsize = true, width = 0.9, color=red]
+  Apres
+  
+  # several 'edge' statements
+  Escolha1->Apres;Carro->Apres
+}
+", width = 500, height = 550)
+```
+
+---
+
+## Paradoxo de Simpson
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("img/simpson1.png")
+```
+
+---
+
+## Paradoxo de Simpson
+
+```{r echo=FALSE, out.width="100%"}
+knitr::include_graphics("img/simpson2.png")
+```
+
+---
+
+## Confundimento!
+
+```{r, echo=FALSE}
+DiagrammeR::grViz("
+digraph lr {
+  # a 'graph' statement
+  rankdir=LR
+  node [shape = circle, fixedsize = true, width = 0.9]
+  IdadeSex;Tratamento;
+  node [shape = circle, fixedsize = true, width = 0.9, color=red]
+  Melhorar
+  
+  # several 'edge' statements
+  Tratamento->Melhorar;IdadeSex->Tratamento;IdadeSex->Melhorar
+}
+", width = 500, height = 300)
+```
+
+---
+
+# Priest & Klein
+
+- O artigo sobre viés de seleção em disputas judiciais está relacionado a um colisor: um viés de seleção que existe.
+
+**Ver**: [Fórum ABJ](https://forum.abj.org.br/t/o-que-e-o-teorema-de-priest-klein/39)
 
 ---
 class: middle, center

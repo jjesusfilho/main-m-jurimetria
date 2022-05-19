@@ -7,6 +7,10 @@
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
     <script src="libs/panelset-0.2.6/panelset.js"></script>
+    <script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+    <script src="libs/viz-1.8.2/viz.js"></script>
+    <link href="libs/DiagrammeR-styles-0.2/styles.css" rel="stylesheet" />
+    <script src="libs/grViz-binding-1.0.9/grViz.js"></script>
     <link rel="stylesheet" href="css/xaringan-themer.css" type="text/css" />
     <link rel="stylesheet" href="css/custom-css.css" type="text/css" />
   </head>
@@ -845,7 +849,7 @@ image_read("https://jeroen.github.io/images/frink.png") |&gt;
 
 .pull-right[
 #### Saída
-&lt;img src="index_files/figure-html/frink-out-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="index_files/figure-html/frink-out-1.png" width="620" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -970,7 +974,7 @@ class: stats
 
 # Estudo prospectivo e retrospectivo
 
-&lt;img src="img/tempos.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/tempos.png" width="1537" style="display: block; margin: auto;" /&gt;
 
 ---
 class: stats
@@ -1160,7 +1164,7 @@ class: case
 
 # ObsDash
 
-&lt;img src="img/obsdash.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/obsdash.png" width="2516" style="display: block; margin: auto;" /&gt;
 
 ---
 class: case
@@ -1196,7 +1200,7 @@ class: jurimetrics
 - [AB2L](https://ab2l.org.br/radar-lawtechs/) surgiu em 2016
 - Brasil apresenta um dos maiores mercados mercados
 
-&lt;img src="img/lawtechs.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/lawtechs.png" width="1707" style="display: block; margin: auto;" /&gt;
 
 ---
 class: jurimetrics
@@ -1225,7 +1229,7 @@ class: jurimetrics
 ---
 class: jurimetrics
 
-&lt;img src="img/jurimetria_empresas.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/jurimetria_empresas.png" width="1460" style="display: block; margin: auto;" /&gt;
 
 ---
 class: jurimetrics
@@ -1566,7 +1570,7 @@ class: stats
 
 - Melhor introdução para o tema: [ISLR](https://www.statlearning.com)
 
-&lt;img src="img/islr.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/islr.png" width="1556" style="display: block; margin: auto;" /&gt;
 
 - __Machine learning__ e __statistical learning__ são __sinônimos__.
 
@@ -1579,7 +1583,7 @@ Paradigma programação vs paradigma do aprendizado estatístico.
 
 .pull-left[
 
-&lt;img src="img/ia_esquerda.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/ia_esquerda.png" width="605" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -1587,7 +1591,7 @@ Paradigma programação vs paradigma do aprendizado estatístico.
 
 .pull-right[
 
-&lt;img src="img/ia_direita.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/ia_direita.png" width="657" style="display: block; margin: auto;" /&gt;
 
 ]
 
@@ -1642,7 +1646,7 @@ class: stats
 
 - Um modelo de aprendizado estatístico precisa funcionar bem para bases que nós __não observamos__. Para isso, tentamos criar um modelo que se adeque bem aos dados que observamos.
 
-&lt;img src="img/alvo.jpg" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/alvo.jpg" width="1707" style="display: block; margin: auto;" /&gt;
 
 ---
 class: stats
@@ -1704,7 +1708,7 @@ class: case
 
 # Voltando ao case
 
-&lt;img src="img/diagnostico.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/diagnostico.png" width="2157" style="display: block; margin: auto;" /&gt;
 
 - Acurácia do modelo: 88%. É bom?
 
@@ -1745,7 +1749,151 @@ Livro: [Interpretable Machine Learning](https://christophm.github.io/interpretab
 
 - Um modelo pode otimizar __métricas diferentes__, e essas métricas dependem do modelo de negócio.
 
+---
+class: middle, center, inverse
 
+# Tópicos de Jurimetria
+
+---
+
+# Tópicos
+
+### Teoria da decisão
+
+### Causalidade
+
+### Priest &amp; Klein
+
+---
+
+# Teoria da decisão
+
+- Área do conhecimento que envolve tomar decisões *racionais* em um ambiente de incerteza
+
+- A maior parte dos modelos estatísticos podem ser pensados como problemas de teoria da decisão
+
+---
+
+# Exemplo: guarda-chuva
+
+**Pergunta**: Devo levar guarda-chuva quando sair de casa?
+
+**Utilidade/perda**: Quanto eu fico feliz ou triste em cada situação
+
+**Probabilidade**: Qual a probabilidade do evento ocorrer
+
+--
+
+## Exemplo no excel
+
+---
+class: middle, inverse, center
+
+# Causalidade
+
+---
+
+# O que é causalidade?
+
+A pesquisa em causalidade busca descobrir uma relação funcional entre duas ou mais variáveis. Por exemplo:
+
+$$
+y = f(x) = a + bx
+$$
+
+No mundo real, observamos essa relação com ruídos. O importante é que esse ruído não tenha relação com outras variáveis que explicam o fenômeno. Exemplo:
+
+$$
+y = f(x) = a + bx + \varepsilon, \ \ \varepsilon\sim\mathcal N(0,\sigma^2)
+$$
+
+---
+
+# Três passos da causalidade
+
+Vamos pensar em um problema onde estamos estudando se a grama fica molhada, observando o céu e um regador.
+
+--
+
+- __Predição__: dado que eu observei o regador funcionando, qual a probabilidade da grama estar molhada? 2) dado que eu observei o céu nublado, qual a probabilidade da grama estar molhada?  
+
+--
+
+- __Intervenção__: se eu girar o regador, qual a probabilidade da grama se molhar? 2) Se eu fizer a dança da chuva, qual a probabilidade da grama se molhar?
+
+--
+
+- __Contrafactual__: Sabendo que eu observei o regador desligado e o chão seco, qual a probabilidade do chão estar molhado se eu tivesse ligado o regador? 2) Sabendo que eu observei o céu azul e o chão seco, qual a probabilidade do chão estar molhado se eu tivesse feito a dança da chuva?
+
+---
+
+# Judea Pearl
+
+&lt;img src="img/judeapearl.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Três estruturas básicas
+
+--
+
+### Mediadores
+
+A -&gt; B -&gt; C
+
+--
+
+### Confundidores / garfos
+
+A &lt;- B -&gt; C
+
+--
+
+### Colisores
+
+A -&gt; B &lt;- C
+
+---
+
+# Paradoxos
+
+## Monty Hall
+
+&lt;img src="img/montyhallproblem.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Colisor!
+
+<div id="htmlwidget-2a9485d7d9fbc7140662" style="width:500px;height:550px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-2a9485d7d9fbc7140662">{"x":{"diagram":"\ndigraph lr {\n  # a \"graph\" statement\n  rankdir=LR\n  node [shape = circle, fixedsize = true, width = 0.9]\n  Escolha1;Carro;\n  node [shape = circle, fixedsize = true, width = 0.9, color=red]\n  Apres\n  \n  # several \"edge\" statements\n  Escolha1->Apres;Carro->Apres\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+
+---
+
+## Paradoxo de Simpson
+
+&lt;img src="img/simpson1.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Paradoxo de Simpson
+
+&lt;img src="img/simpson2.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Confundimento!
+
+<div id="htmlwidget-29205d8484830a6881fb" style="width:500px;height:300px;" class="grViz html-widget"></div>
+<script type="application/json" data-for="htmlwidget-29205d8484830a6881fb">{"x":{"diagram":"\ndigraph lr {\n  # a \"graph\" statement\n  rankdir=LR\n  node [shape = circle, fixedsize = true, width = 0.9]\n  IdadeSex;Tratamento;\n  node [shape = circle, fixedsize = true, width = 0.9, color=red]\n  Melhorar\n  \n  # several \"edge\" statements\n  Tratamento->Melhorar;IdadeSex->Tratamento;IdadeSex->Melhorar\n}\n","config":{"engine":"dot","options":null}},"evals":[],"jsHooks":[]}</script>
+
+---
+
+# Priest &amp; Klein
+
+- O artigo sobre viés de seleção em disputas judiciais está relacionado a um colisor: um viés de seleção que existe.
+
+**Ver**: [Fórum ABJ](https://forum.abj.org.br/t/o-que-e-o-teorema-de-priest-klein/39)
 
 ---
 class: middle, center
